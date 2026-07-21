@@ -35,6 +35,20 @@ or
 
 (you may also need to install matplotlib)
 
+Supported Programs
+******************
+
+GoodVibes reads output files from:
+
+* **Gaussian** (09, 16) ``.log`` / ``.out`` -- optimization, frequency, single-point, link jobs, ONIOM, VPT2 anharmonic
+* **ORCA** (5, 6) ``.out`` -- optimization, frequency, single-point, DLPNO-CCSD(T)
+* **NWChem** ``.out`` -- optimization, frequency, single-point
+* **QChem** (6) ``.out`` / ``.qcin`` -- optimization, frequency, single-point, linked jobs
+* **xTB** ``.out`` -- frequency calculations (ORCA/xTB integration compatible)
+* **ASE** (Atomic Simulation Environment) ``.extxyz`` -- extended XYZ format with energy & frequency data
+
+The program is auto-detected from the output file contents. Additional file extensions can be registered with ``--custom_ext``.
+
 Computing Thermochemistry for QM Output Files
 ----------------------------------------------
 
@@ -224,6 +238,11 @@ This can be done with the ``--jobs`` flag:
     goodvibes *.log --jobs 16
 
 This will use 16 processors to run GoodVibes on all your Gaussian output files.
+
+.. note::
+
+    ``--jobs 0`` will use all processors available to run GoodVibes on your output files.
+
 
 Saving Metadata
 ----------------
